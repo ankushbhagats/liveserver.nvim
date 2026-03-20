@@ -1,0 +1,178 @@
+*liveserver.nvim.txt*   live-server integration for Neovim
+
+==============================================================================
+CONTENTS                                                *liveserver.nvim*
+
+1. Introduction ....................................... |liveserver-intro|
+2. Installation ....................................... |liveserver-install|
+3. Configuration ...................................... |liveserver-config|
+4. Commands ........................................... |liveserver-commands|
+5. Lualine Integration ................................ |liveserver-lualine|
+6. Default Config ..................................... |liveserver-default|
+7. License ............................................ |liveserver-license|
+
+==============================================================================
+
+INTRODUCTION                                          *liveserver-intro*
+
+liveserver.nvim lets you run and manage live-server directly inside Neovim.
+
+Features:
+- Start/stop live-server from commands
+- Full CLI argument support (key=value)
+- Per-directory instances
+- Multi-server (multiple ports)
+- Interactive server selector
+- Lualine clickable toggle
+- Lightweight and fast
+
+==============================================================================
+
+INSTALLATION                                          *liveserver-install*
+
+1. Install live-server globally:
+
+    npm install -g live-server
+
+2. Install using lazy.nvim:
+
+    lua << EOF
+    require('lazy').setup({
+      {
+        'ankushbhagats/liveserver.nvim',
+        build = 'npm i -g live-server',
+        config = true,
+      }
+    })
+    EOF
+
+==============================================================================
+
+CONFIGURATION                                         *liveserver-config*
+
+Basic setup:
+
+    lua << EOF
+    require("liveserver").setup({
+      filetypes = {
+        html = true,
+        css = true,
+        javascript = true,
+      },
+      args = {
+        port = 8080,
+        ["no-browser"] = true,
+      },
+      colortype = "hex",
+    })
+    EOF
+
+Options:
+
+filetypes   (table|string)
+    Filetypes where lualine component is shown.
+    Use "*" for all filetypes.
+
+args        (table)
+    CLI arguments passed to live-server.
+    Format: key = value
+
+colortype   (string)
+    "hex" or "hl"
+    Controls color source for lualine.
+
+states      (table)
+    Customize lualine appearance for each state.
+
+==============================================================================
+
+COMMANDS                                              *liveserver-commands*
+
+:LiveServerStart [dir] [key=val ...]
+
+    Start a live-server instance.
+
+    Examples:
+        :LiveServerStart
+        :LiveServerStart ./public port=3000
+        :LiveServerStart port=8081 no-browser=true
+
+    Notes:
+    - Default directory: current working directory
+    - Default port: 8080
+
+------------------------------------------------------------------------------
+
+:LiveServerStop [port]
+
+    Stop a running server.
+
+    Examples:
+        :LiveServerStop
+        :LiveServerStop 3000
+
+    Notes:
+    - Default port: 8080
+
+------------------------------------------------------------------------------
+
+:LiveServerSelect
+
+    Interactive selector for running servers.
+
+    Workflow:
+    1. Choose a running server
+    2. Select action:
+        - Open Workspace
+        - Stop Server
+        - Cancel
+
+==============================================================================
+
+LUALINE INTEGRATION                                  *liveserver-lualine*
+
+Displays a clickable toggle in statusline.
+
+States:
+
+Idle        Server not running
+Starting    Server is starting
+Running     Server active (shows port)
+Stopping    Server shutting down
+
+Features:
+- Mouse/touch clickable
+- Per-directory scope
+- Dynamic state updates
+
+==============================================================================
+
+DEFAULT CONFIG                                       *liveserver-default*
+
+    lua << EOF
+    require("liveserver").setup({
+      filetypes = {
+        html = true,
+        css = true,
+        javascript = true,
+        typescript = true,
+      },
+      args = {
+        port = 5555,
+        host = "127.0.0.1",
+        ["no-browser"] = false,
+        watch = "*.html,*.css,*.js",
+      },
+      colortype = "hl",
+    })
+    EOF
+
+==============================================================================
+
+LICENSE                                              *liveserver-license*
+
+GNU General Public License v3
+
+==============================================================================
+
+vim:tw=78:ts=8:noet:ft=help:norl:
