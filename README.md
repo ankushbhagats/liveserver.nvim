@@ -2,6 +2,12 @@
 
 liveserver.nvim lets you run and manage live-server directly in Neovim. Start, stop, and switch servers with commands or a clickable lualine toggle. Lightweight, fast, and multi-server ready, perfect for web dev workflows.
 
+<kbd>
+<p align="center">
+  <img src="./src/demo.gif" width="700" />
+</p>
+</kbd>
+
 ---
 
 ## ✨ Features
@@ -135,15 +141,15 @@ Start a live-server instance.
 - Supports **all liveserver CLI params** as:
 
 ```sh
-:LiveServerStart ./public port=3000 host=127.0.0.1 no-browser=true
+:LiveServerStart 3000 ./public host=127.0.0.1 no-browser=true
 ```
 
 #### :LiveServerStop [port]
 Stop a running server.
-Stops port 8080 by default.
+Stops current directory running port by default.
 Can stop any port:
 ```sh
-:LiveServerStop 3000
+:LiveServerStop 4001
 ```
 
 #### :LiveServerSelect

@@ -94,8 +94,8 @@ COMMANDS                                              *liveserver-commands*
 
     Examples:
         :LiveServerStart
-        :LiveServerStart ./public port=3000
-        :LiveServerStart port=8081 no-browser=true
+        :LiveServerStart 3000 ./public
+        :LiveServerStart 8081 no-browser=true
 
     Notes:
     - Default directory: current working directory
@@ -110,9 +110,6 @@ COMMANDS                                              *liveserver-commands*
     Examples:
         :LiveServerStop
         :LiveServerStop 3000
-
-    Notes:
-    - Default port: 8080
 
 ------------------------------------------------------------------------------
 
