@@ -88,7 +88,7 @@ states      (table)
 
 COMMANDS                                              *liveserver-commands*
 
-:LiveServerStart [dir] [key=val ...]
+:LiveServerStart [port] [dir] [key=val ...]
 
     Start a live-server instance.
 

@@ -191,7 +191,7 @@ M.start = function(path, opts)
 		cmd_exe = "live-server.cmd"
 	end
 
-	local function build_cmd(opts)
+	local function build_cmd()
 		local args = {}
 
 		for key, val in pairs(opts or {}) do
@@ -207,7 +207,7 @@ M.start = function(path, opts)
 	end
 
 	local cmd = { cmd_exe, path }
-	local args = build_cmd(opts)
+	local args = build_cmd()
 
 	vim.list_extend(cmd, args)
 
@@ -280,7 +280,6 @@ local choose_option = function(option)
 end
 
 M.select = function()
-	local store = require("liveserver.store")
 	local items = {}
 	for _, value in pairs(store.get()) do
 		table.insert(items, {

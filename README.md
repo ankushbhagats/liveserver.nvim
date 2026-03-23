@@ -132,7 +132,7 @@ require("liveserver").setup({
 
 ## Commands
 
-#### `:LiveServerStart [dir] [key=val ...]`
+#### `:LiveServerStart [port] [dir] [key=val ...]`
 
 Start a live-server instance.
 
